@@ -1,0 +1,24 @@
+# Environments
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Databases
+*.sqlite3
+*.db
+chroma_db/
+
+# Uploads
+uploads/
+backend/uploads/
+
+# Node
+node_modules/
+dist/
+build/

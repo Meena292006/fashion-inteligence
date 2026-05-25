@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+chromadb
+pydantic-ai
+groq
+python-dotenv
+pillow
+ollama
