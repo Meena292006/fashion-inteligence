@@ -11,6 +11,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   font-family: inherit;
+  position: relative;
 }
 
 /* ==========================================
@@ -1103,8 +1104,8 @@
     position: absolute;
     z-index: 100;
     left: 0;
-    top: 0;
-    height: 100%;
+    top: 60px;
+    height: calc(100% - 60px);
     box-shadow: var(--shadow-lg);
     background: var(--bg-secondary);
   }
@@ -1309,8 +1310,8 @@
     position: absolute;
     z-index: 100;
     left: 0;
-    top: 0;
-    height: 100%;
+    top: 48px;
+    height: calc(100% - 48px);
     box-shadow: var(--shadow-lg);
   }
 

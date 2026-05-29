@@ -17,7 +17,7 @@ function ChatInterface() {
   const [activeThreadId, setActiveThreadId] = useState(null);
   
   // Sidebar state
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 900);
   
   // Current input/loading state
   const [query, setQuery] = useState('');
@@ -692,6 +692,9 @@ function ChatInterface() {
         onClick={() => {
           if (!isEditing) {
             setActiveThreadId(t.id);
+            if (window.innerWidth <= 900) {
+              setIsSidebarOpen(false);
+            }
           }
         }}
       >
