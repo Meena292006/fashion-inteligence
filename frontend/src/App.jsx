@@ -3,11 +3,10 @@ import './App.css';
 import ChatInterface from './components/ChatInterface';
 import ImageUpload from './components/ImageUpload';
 import WardrobeView from './components/WardrobeView';
-import { MessageSquare, Upload, Shirt, Sparkles, Menu, X } from 'lucide-react';
+import { MessageSquare, Upload, Shirt, Sparkles } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState('chat');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="app">
@@ -44,42 +43,33 @@ function App() {
             </button>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="mobile-menu-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav className="nav-mobile">
-            <button 
-              className={`nav-item ${activeTab === 'chat' ? 'active' : ''}`}
-              onClick={() => { setActiveTab('chat'); setMobileMenuOpen(false); }}
-            >
-              <MessageSquare size={20} />
-              <span>Ask Stylist</span>
-            </button>
-            <button 
-              className={`nav-item ${activeTab === 'upload' ? 'active' : ''}`}
-              onClick={() => { setActiveTab('upload'); setMobileMenuOpen(false); }}
-            >
-              <Upload size={20} />
-              <span>Add Item</span>
-            </button>
-            <button 
-              className={`nav-item ${activeTab === 'wardrobe' ? 'active' : ''}`}
-              onClick={() => { setActiveTab('wardrobe'); setMobileMenuOpen(false); }}
-            >
-              <Shirt size={20} />
-              <span>My Wardrobe</span>
-            </button>
-          </nav>
-        )}
       </header>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <nav className="nav-bottom-bar">
+        <button 
+          className={`nav-item ${activeTab === 'chat' ? 'active' : ''}`}
+          onClick={() => setActiveTab('chat')}
+        >
+          <MessageSquare size={20} />
+          <span>Stylist</span>
+        </button>
+        <button 
+          className={`nav-item ${activeTab === 'upload' ? 'active' : ''}`}
+          onClick={() => setActiveTab('upload')}
+        >
+          <Upload size={20} />
+          <span>Add Item</span>
+        </button>
+        <button 
+          className={`nav-item ${activeTab === 'wardrobe' ? 'active' : ''}`}
+          onClick={() => setActiveTab('wardrobe')}
+        >
+          <Shirt size={20} />
+          <span>Wardrobe</span>
+        </button>
+      </nav>
 
       {/* Main Content */}
       <main className="main">

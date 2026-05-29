@@ -36,8 +36,10 @@ body {
 
 .app {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -98,6 +100,11 @@ body {
   padding: 8px;
 }
 
+/* Mobile Bottom Navigation Bar */
+.nav-bottom-bar {
+  display: none;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
@@ -149,11 +156,20 @@ body {
   font-size: 14px;
 }
 
-/* Responsive */
+/* Responsive — Tablet */
 @media (max-width: 768px) {
   .header-container {
     padding: 0 16px;
-    height: 64px;
+    height: 56px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo-icon {
+    width: 26px;
+    height: 26px;
   }
 
   .logo-text {
@@ -165,24 +181,81 @@ body {
   }
 
   .mobile-menu-btn {
-    display: block;
+    display: none;
   }
 
-  .nav-mobile {
+  /* Show bottom navigation bar on mobile */
+  .nav-bottom-bar {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px 16px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--bg-primary);
     border-top: 1px solid var(--border);
+    padding: 6px 8px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
+    justify-content: space-around;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
   }
 
-  .nav-mobile .nav-item {
-    width: 100%;
-    justify-content: flex-start;
+  .nav-bottom-bar .nav-item {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 10px;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .nav-bottom-bar .nav-item.active {
+    background: var(--bg-tertiary);
+    color: var(--accent);
+  }
+
+  .nav-bottom-bar .nav-item span {
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  /* Hide mobile menu & footer on mobile since we have bottom bar */
+  .nav-mobile {
+    display: none !important;
+  }
+
+  .footer {
+    display: none;
   }
 
   .main {
-    padding: 24px 16px;
+    padding: 16px 12px;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Responsive — Small Mobile */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 12px;
+    height: 52px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .main {
+    padding: 12px 8px;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 }
 

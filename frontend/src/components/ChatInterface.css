@@ -1090,57 +1090,316 @@
 /* ==========================================
    RESPONSIVENESS ADJUSTMENTS
    ========================================== */
+
+/* Tablet breakpoint */
 @media (max-width: 900px) {
   .chat-dashboard-container {
-    height: 640px;
+    height: calc(100vh - 130px);
+    height: calc(100dvh - 130px);
+    border-radius: 16px;
   }
+
   .chat-sidebar {
     position: absolute;
     z-index: 100;
     left: 0;
-    top: 60px;
-    height: calc(100% - 60px);
+    top: 0;
+    height: 100%;
     box-shadow: var(--shadow-lg);
+    background: var(--bg-secondary);
   }
+
   .chat-sidebar.collapsed {
     transform: translateX(-100%);
+    width: 0px;
+    min-width: 0px;
   }
+
+  .chat-sidebar.open {
+    transform: translateX(0);
+    width: 280px;
+    min-width: 280px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 640px) {
+  .chat-dashboard-container {
+    height: calc(100vh - 52px - 72px - env(safe-area-inset-bottom));
+    height: calc(100dvh - 52px - 72px - env(safe-area-inset-bottom));
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .chat-main-header {
+    height: 48px;
+    padding: 0 12px;
+  }
+
+  .current-chat-title {
+    font-size: 14px;
+  }
+
+  .model-select-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .model-dropdown-menu {
+    width: 160px;
+  }
+
+  .messages-scroll-viewport {
+    padding: 12px;
+  }
+
+  /* Welcome state mobile */
+  .welcome-state-container {
+    padding: 24px 12px;
+  }
+
+  .welcome-state-container h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .welcome-state-container p {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .welcome-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .welcome-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .chips-container {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .suggest-chip {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  .suggestion-label {
+    font-size: 11px;
+  }
+
+  /* Messages mobile */
+  .user-message-row {
+    max-width: 92%;
+    gap: 8px;
+  }
+
+  .ai-message-row {
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .user-text-bubble {
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 14px 14px 2px 14px;
+  }
+
+  .ai-response-card {
+    padding: 12px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .ai-response-content {
+    font-size: 13px;
+  }
+
+  .message-header-row {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .message-header-row.user {
+    margin-right: 36px;
+  }
+
+  .message-header-row.ai {
+    margin-left: 36px;
+  }
+
+  /* AI response actions */
+  .ai-response-actions-row {
+    padding-top: 8px;
+    margin-top: 2px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .model-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .action-btn {
+    padding: 5px;
+  }
+
+  /* Sources panel mobile */
+  .inner-sources-toggle {
+    padding: 8px 12px;
+  }
+
+  .toggle-label-left {
+    font-size: 11px;
+  }
+
+  .inner-sources-list {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .inner-source-item {
+    padding: 8px;
+  }
+
+  .source-excerpt {
+    font-size: 10px;
+  }
+
+  /* Input area mobile */
+  .chat-input-sticky-bottom {
+    padding: 8px 12px;
+  }
+
+  .premium-textarea-box {
+    border-radius: 10px;
+    padding: 8px 12px;
+  }
+
+  .premium-textarea-box textarea {
+    font-size: 14px;
+    max-height: 100px;
+  }
+
+  .textarea-controls-row {
+    padding-top: 6px;
+    margin-top: 2px;
+  }
+
+  .input-disclaimer {
+    font-size: 9px;
+  }
+
+  /* Sidebar full overlay on mobile */
+  .chat-sidebar {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    height: 100%;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .chat-sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 0;
+    min-width: 0;
+  }
+
   .chat-sidebar.open {
     transform: translateX(0);
     width: 260px;
     min-width: 260px;
   }
+
+  .sidebar-header {
+    padding: 14px 12px;
+  }
+
+  .sidebar-footer {
+    padding: 12px;
+  }
+
+  .upgrade-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .upgrade-card p {
+    font-size: 10px;
+  }
+
+  .upgrade-btn {
+    height: 30px;
+    font-size: 11px;
+  }
 }
 
-@media (max-width: 640px) {
+/* Very small mobile */
+@media (max-width: 400px) {
   .chat-dashboard-container {
-    height: calc(100vh - 120px);
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+    height: calc(100vh - 52px - 72px - env(safe-area-inset-bottom));
+    height: calc(100dvh - 52px - 72px - env(safe-area-inset-bottom));
   }
-  
-  .messages-scroll-viewport {
-    padding: 16px;
+
+  .welcome-state-container h1 {
+    font-size: 20px;
   }
-  
+
+  .welcome-state-container p {
+    font-size: 12px;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .avatar svg {
+    width: 12px;
+    height: 12px;
+  }
+
   .user-message-row {
-    max-width: 90%;
+    max-width: 95%;
   }
 
-  .ai-message-row {
-    max-width: 100%;
-  }
-
-  .chips-container {
-    grid-template-columns: 1fr;
-  }
-  
   .ai-response-card {
-    padding: 14px;
+    padding: 10px;
+  }
+
+  .ai-response-content {
+    font-size: 12.5px;
+  }
+
+  .formatted-message .msg-paragraph {
+    font-size: 13px;
+  }
+
+  .formatted-message .msg-list-item {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .formatted-message .list-item-content {
+    font-size: 13px;
   }
 
   .chat-input-sticky-bottom {
-    padding: 12px 16px;
+    padding: 6px 8px;
   }
 }
